@@ -23,7 +23,7 @@ class Usuario {
     };
 
     addBook(titulo, autor){
-        (this.libros).push({nombre: titulo, autor: autor});
+        (this.libros).push({titulo: titulo, autor: autor});
     };
 
     getBookNames(){
@@ -58,3 +58,6 @@ console.log(usuario1.countMascotas());
 //Lista de libros por título del array del usuario1:
 console.log(usuario1.getBookNames());
 
+//Agrego un nuevo libro al array de libros:
+usuario1.addBook('Cuentos completos', 'Isaac Asimov');
+console.log(usuario1.getBookNames());
