@@ -13,40 +13,45 @@ class ProductManager {
             break;
         }
     }
+    
+    //Creamos new product:
+    let newProduct = { title, description, price, thumbnail, code, stock};
 
+    //Validamos los campos obligatorios:
+
+  if(!Object.values(newProduct).includes(undefined)){
     ProductManager.id++;
-    this.products.push({
-      title,
-      description,
-      price,
-      thumbnail,
-      code,
-      stock,
-      id: ProductManager.id,
-    });
+    this.products.push({...newProduct, id: ProductManager.id});
+  }else{
+    console.log("Todos los campos son requeridos")
+  }
+
   }
 
   //Método para agregar producto:
-  getProduct() {
+ getProduct() {
     return this.products;
-  }
+ }
 
-  //Método para buscar existencia por id:
 
   //Función para buscar id con método find:
-  buscarProducto(id) {
+  exist(id) {
     return this.products.find((producto) => producto.id === id);
   }
 
   //Opeerador ternario para devolver producto o not found:
   getProductById(id) {
-    this.buscarProducto(id)
+    this.exist(id)
       ? console.log(this.buscarProducto(id))
       : console.log("Not found");
   }
 }
 
+//Creamos un nuevo Product manager:
 const productos = new ProductManager();
+
+//Primer llamada a getproduct opara obtener el array vacío;
+console.log(productos.getProduct());
 
 //Producto1:
 productos.addProduct(
@@ -68,8 +73,8 @@ productos.addProduct(
   8
 );
 
-//Testing productos:
+//Segunda llamada de product para obrtener los productos ingresados:
 console.log(productos.getProduct());
 
 //Testing oproducto by id:
-//productos.getProductById(3);
+productos.getProductById(3);
