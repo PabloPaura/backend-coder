@@ -7,32 +7,30 @@ class ProductManager {
 
   //Método para generar nuevo producto:
   addProduct(title, description, price, thumbnail, code, stock) {
-    for(let i = 0; i < this.products.length; i++){
-        if(this.products[i].code === code){
-            console.log(`El codigo ${code} ya se encuentra en uso.`);
-            break;
-        }
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].code === code) {
+        console.log(`El codigo ${code} ya se encuentra en uso.`);
+        break;
+      }
     }
-    
+
     //Creamos new product:
-    let newProduct = { title, description, price, thumbnail, code, stock};
+    let newProduct = { title, description, price, thumbnail, code, stock };
 
     //Validamos los campos obligatorios:
 
-  if(!Object.values(newProduct).includes(undefined)){
-    ProductManager.id++;
-    this.products.push({...newProduct, id: ProductManager.id});
-  }else{
-    console.log("Todos los campos son requeridos")
-  }
-
+    if (!Object.values(newProduct).includes(undefined)) {
+      ProductManager.id++;
+      this.products.push({ ...newProduct, id: ProductManager.id });
+    } else {
+      console.log("Todos los campos son requeridos");
+    }
   }
 
   //Método para agregar producto:
- getProduct() {
+  getProduct() {
     return this.products;
- }
-
+  }
 
   //Función para buscar id con método find:
   exist(id) {
